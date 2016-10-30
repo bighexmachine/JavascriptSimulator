@@ -1,0 +1,136 @@
+*
+{
+	margin:0px;
+	padding:0px;	
+	font-family:Circular;
+}
+
+
+@font-face 
+{
+	font-family: Circular;
+	src: url(CircularStd-Bold.otf);
+}  
+
+h1
+{
+	text-align:center;
+	margin-top:30px;
+}
+  
+.col
+{
+	width:20px;
+	height:20px;
+	border:3px solid white;
+	background-color:lightgray;
+}
+
+.col
+{
+	display:inline;
+	float:left;
+}
+
+.row
+{
+	display:block;
+	overflow:auto;	
+}
+
+body
+{
+	margin:auto;
+	width:416px;
+	margin-bottom:50px;
+}
+
+#display
+{
+	width:416px;
+	margin-top:30px;
+	border:1px solid lightgray;
+	overflow:auto;
+}
+
+.label
+{
+	border:1px solid lightgray;
+	display:inline-block;
+	margin-right:10px;
+	padding:10px;	
+}
+
+#registers, #controls, #memoryloaders
+{
+	margin-top:30px;
+	display:block;
+	overflow:auto;	
+	text-align:center;
+	width:416px;
+}
+
+#registers .label
+{
+	margin-right:5px;
+	font-size:12px;
+}
+
+#controls .label
+{
+	color:white;
+	border:0px;
+	border-radius:5px;
+	font-weight:bold;
+}
+
+#memoryloaders .label
+{
+	display:block;
+	text-align:left;
+	margin:0px;
+	margin-bottom:10px;
+}
+
+#start
+{
+	background-color:lime;
+}
+
+#stop
+{
+	background-color:red;	
+}
+
+#reset
+{
+	background-color:black;	
+}
+
+#clockslow
+{
+	background-color:blue;	
+}
+
+#clockfast
+{
+	background-color:orange;	
+}
+
+.filedisplay
+{
+	font-size:10px;
+	padding:5px;
+	border:1px dashed gray;
+	margin-top:10px;
+}
+
+.button
+{
+	border-radius:5px;
+	background-color:black;
+	color:white;
+	border:0px !important;	
+	cursor:pointer;
+	user-select: none;
+}

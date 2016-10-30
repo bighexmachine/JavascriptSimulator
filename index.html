@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="simRunner.js"></script>
+<script src="simulator.js"></script>
+
+
+</head>
+
+<body>
+
+	<h1>The Big Hex Machine Javascript Simulator</h1>
+	<h2 style = "color:red; margin-top:20px;">WARNING: This Simulator is still under construction and may work correctly. I/O has not yet been implemented.</h2>
+	
+	<div id = "memoryloaders">
+		<div id = "sim2" class = "label">
+			lBytes: <input type="file" id="fileInputA">
+			<div id = "fileDisplayAreaA" class = "filedisplay"></div>
+		</div>
+		
+		<div id = "sim3" class = "label">
+			uBytes: <input type="file" id="fileInputB">
+			<div id = "fileDisplayAreaB" class = "filedisplay"></div>
+		</div>
+	</div>
+
+
+	<div id = "controls">
+		<div id = "start" class = "label button">Start</div>
+		<div id = "stop" class = "label button">Stop</div>
+		<div id = "clockslow" class = "label button">Clock x1</div>
+		<div id = "clockfast" class = "label button">Clock x10</div>
+		<div id = "reset" class = "label button">Reset</div>
+	</div>
+
+	
+	<div id = "registers">
+		<div class = "label">A Reg: <div class = "value" id = "areg">0</div></div>
+		<div class = "label">B Reg: <div class = "value" id = "breg">0</div></div>
+		<div class = "label">PC: <div class = "value" id = "preg">0</div></div>
+		<div class = "label">Instruction: <div class = "value" id = "ireg">0</div></div>
+		<div class = "label">Operand: <div class = "value" id = "oreg">0</div></div>
+	</div>
+	
+	<div id = "display">
+	
+		<div class = "row row-0">
+			<div class = "col col-0"></div>
+			<div class = "col col-1"></div>
+			<div class = "col col-2"></div>
+			<div class = "col col-3"></div>
+			<div class = "col col-4"></div>
+			<div class = "col col-5"></div>
+			<div class = "col col-6"></div>
+			<div class = "col col-7"></div>
+			<div class = "col col-8"></div>
+			<div class = "col col-9"></div>
+			<div class = "col col-a"></div>
+			<div class = "col col-b"></div>
+			<div class = "col col-c"></div>
+			<div class = "col col-d"></div>
+			<div class = "col col-e"></div>
+			<div class = "col col-f"></div>
+		</div>
+
+		<div class = "row row-1">
+			<div class = "col col-0"></div>
+			<div class = "col col-1"></div>
+			<div class = "col col-2"></div>
+			<div class = "col col-3"></div>
+			<div class = "col col-4"></div>
+			<div class = "col col-5"></div>
+			<div class = "col col-6"></div>
+			<div class = "col col-7"></div>
+			<div class = "col col-8"></div>
+			<div class = "col col-9"></div>
+			<div class = "col col-a"></div>
+			<div class = "col col-b"></div>
+			<div class = "col col-c"></div>
+			<div class = "col col-d"></div>
+			<div class = "col col-e"></div>
+			<div class = "col col-f"></div>
+		</div>
+
+		<div class = "row row-2">
+			<div class = "col col-0"></div>
+			<div class = "col col-1"></div>
+			<div class = "col col-2"></div>
+			<div class = "col col-3"></div>
+			<div class = "col col-4"></div>
+			<div class = "col col-5"></div>
+			<div class = "col col-6"></div>
+			<div class = "col col-7"></div>
+			<div class = "col col-8"></div>
+			<div class = "col col-9"></div>
+			<div class = "col col-a"></div>
+			<div class = "col col-b"></div>
+			<div class = "col col-c"></div>
+			<div class = "col col-d"></div>
+			<div class = "col col-e"></div>
+			<div class = "col col-f"></div>
+		</div>
+
+		<div class = "row row-3">
+			<div class = "col col-0"></div>
+			<div class = "col col-1"></div>
+			<div class = "col col-2"></div>
+			<div class = "col col-3"></div>
+			<div class = "col col-4"></div>
+			<div class = "col col-5"></div>
+			<div class = "col col-6"></div>
+			<div class = "col col-7"></div>
+			<div class = "col col-8"></div>
+			<div class = "col col-9"></div>
+			<div class = "col col-a"></div>
+			<div class = "col col-b"></div>
+			<div class = "col col-c"></div>
+			<div class = "col col-d"></div>
+			<div class = "col col-e"></div>
+			<div class = "col col-f"></div>
+		</div>
+
+		<div class = "row row-4">
+			<div class = "col col-0"></div>
+			<div class = "col col-1"></div>
+			<div class = "col col-2"></div>
+			<div class = "col col-3"></div>
+			<div class = "col col-4"></div>
+			<div class = "col col-5"></div>
+			<div class = "col col-6"></div>
+			<div class = "col col-7"></div>
+			<div class = "col col-8"></div>
+			<div class = "col col-9"></div>
+			<div class = "col col-a"></div>
+			<div class = "col col-b"></div>
+			<div class = "col col-c"></div>
+			<div class = "col col-d"></div>
+			<div class = "col col-e"></div>
+			<div class = "col col-f"></div>
+		</div>
+	
+		<div class = "row row-5">
+			<div class = "col col-0"></div>
+			<div class = "col col-1"></div>
+			<div class = "col col-2"></div>
+			<div class = "col col-3"></div>
+			<div class = "col col-4"></div>
+			<div class = "col col-5"></div>
+			<div class = "col col-6"></div>
+			<div class = "col col-7"></div>
+			<div class = "col col-8"></div>
+			<div class = "col col-9"></div>
+			<div class = "col col-a"></div>
+			<div class = "col col-b"></div>
+			<div class = "col col-c"></div>
+			<div class = "col col-d"></div>
+			<div class = "col col-e"></div>
+			<div class = "col col-f"></div>
+		</div>
+		
+		<div class = "row row-6">
+			<div class = "col col-0"></div>
+			<div class = "col col-1"></div>
+			<div class = "col col-2"></div>
+			<div class = "col col-3"></div>
+			<div class = "col col-4"></div>
+			<div class = "col col-5"></div>
+			<div class = "col col-6"></div>
+			<div class = "col col-7"></div>
+			<div class = "col col-8"></div>
+			<div class = "col col-9"></div>
+			<div class = "col col-a"></div>
+			<div class = "col col-b"></div>
+			<div class = "col col-c"></div>
+			<div class = "col col-d"></div>
+			<div class = "col col-e"></div>
+			<div class = "col col-f"></div>
+		</div>		
+		
+		<div class = "row row-7">
+			<div class = "col col-0"></div>
+			<div class = "col col-1"></div>
+			<div class = "col col-2"></div>
+			<div class = "col col-3"></div>
+			<div class = "col col-4"></div>
+			<div class = "col col-5"></div>
+			<div class = "col col-6"></div>
+			<div class = "col col-7"></div>
+			<div class = "col col-8"></div>
+			<div class = "col col-9"></div>
+			<div class = "col col-a"></div>
+			<div class = "col col-b"></div>
+			<div class = "col col-c"></div>
+			<div class = "col col-d"></div>
+			<div class = "col col-e"></div>
+			<div class = "col col-f"></div>
+		</div>		
+		
+		<div class = "row row-8">
+			<div class = "col col-0"></div>
+			<div class = "col col-1"></div>
+			<div class = "col col-2"></div>
+			<div class = "col col-3"></div>
+			<div class = "col col-4"></div>
+			<div class = "col col-5"></div>
+			<div class = "col col-6"></div>
+			<div class = "col col-7"></div>
+			<div class = "col col-8"></div>
+			<div class = "col col-9"></div>
+			<div class = "col col-a"></div>
+			<div class = "col col-b"></div>
+			<div class = "col col-c"></div>
+			<div class = "col col-d"></div>
+			<div class = "col col-e"></div>
+			<div class = "col col-f"></div>
+		</div>
+		
+		<div class = "row row-9">
+			<div class = "col col-0"></div>
+			<div class = "col col-1"></div>
+			<div class = "col col-2"></div>
+			<div class = "col col-3"></div>
+			<div class = "col col-4"></div>
+			<div class = "col col-5"></div>
+			<div class = "col col-6"></div>
+			<div class = "col col-7"></div>
+			<div class = "col col-8"></div>
+			<div class = "col col-9"></div>
+			<div class = "col col-a"></div>
+			<div class = "col col-b"></div>
+			<div class = "col col-c"></div>
+			<div class = "col col-d"></div>
+			<div class = "col col-e"></div>
+			<div class = "col col-f"></div>
+		</div>
+
+		<div class = "row row-a">
+			<div class = "col col-0"></div>
+			<div class = "col col-1"></div>
+			<div class = "col col-2"></div>
+			<div class = "col col-3"></div>
+			<div class = "col col-4"></div>
+			<div class = "col col-5"></div>
+			<div class = "col col-6"></div>
+			<div class = "col col-7"></div>
+			<div class = "col col-8"></div>
+			<div class = "col col-9"></div>
+			<div class = "col col-a"></div>
+			<div class = "col col-b"></div>
+			<div class = "col col-c"></div>
+			<div class = "col col-d"></div>
+			<div class = "col col-e"></div>
+			<div class = "col col-f"></div>
+		</div>
+
+		<div class = "row row-b">
+			<div class = "col col-0"></div>
+			<div class = "col col-1"></div>
+			<div class = "col col-2"></div>
+			<div class = "col col-3"></div>
+			<div class = "col col-4"></div>
+			<div class = "col col-5"></div>
+			<div class = "col col-6"></div>
+			<div class = "col col-7"></div>
+			<div class = "col col-8"></div>
+			<div class = "col col-9"></div>
+			<div class = "col col-a"></div>
+			<div class = "col col-b"></div>
+			<div class = "col col-c"></div>
+			<div class = "col col-d"></div>
+			<div class = "col col-e"></div>
+			<div class = "col col-f"></div>
+		</div>
+
+		<div class = "row row-c">
+			<div class = "col col-0"></div>
+			<div class = "col col-1"></div>
+			<div class = "col col-2"></div>
+			<div class = "col col-3"></div>
+			<div class = "col col-4"></div>
+			<div class = "col col-5"></div>
+			<div class = "col col-6"></div>
+			<div class = "col col-7"></div>
+			<div class = "col col-8"></div>
+			<div class = "col col-9"></div>
+			<div class = "col col-a"></div>
+			<div class = "col col-b"></div>
+			<div class = "col col-c"></div>
+			<div class = "col col-d"></div>
+			<div class = "col col-e"></div>
+			<div class = "col col-f"></div>
+		</div>
+
+		<div class = "row row-d">
+			<div class = "col col-0"></div>
+			<div class = "col col-1"></div>
+			<div class = "col col-2"></div>
+			<div class = "col col-3"></div>
+			<div class = "col col-4"></div>
+			<div class = "col col-5"></div>
+			<div class = "col col-6"></div>
+			<div class = "col col-7"></div>
+			<div class = "col col-8"></div>
+			<div class = "col col-9"></div>
+			<div class = "col col-a"></div>
+			<div class = "col col-b"></div>
+			<div class = "col col-c"></div>
+			<div class = "col col-d"></div>
+			<div class = "col col-e"></div>
+			<div class = "col col-f"></div>
+		</div>
+	
+		<div class = "row row-e">
+			<div class = "col col-0"></div>
+			<div class = "col col-1"></div>
+			<div class = "col col-2"></div>
+			<div class = "col col-3"></div>
+			<div class = "col col-4"></div>
+			<div class = "col col-5"></div>
+			<div class = "col col-6"></div>
+			<div class = "col col-7"></div>
+			<div class = "col col-8"></div>
+			<div class = "col col-9"></div>
+			<div class = "col col-a"></div>
+			<div class = "col col-b"></div>
+			<div class = "col col-c"></div>
+			<div class = "col col-d"></div>
+			<div class = "col col-e"></div>
+			<div class = "col col-f"></div>
+		</div>
+		
+		<div class = "row row-f">
+			<div class = "col col-0"></div>
+			<div class = "col col-1"></div>
+			<div class = "col col-2"></div>
+			<div class = "col col-3"></div>
+			<div class = "col col-4"></div>
+			<div class = "col col-5"></div>
+			<div class = "col col-6"></div>
+			<div class = "col col-7"></div>
+			<div class = "col col-8"></div>
+			<div class = "col col-9"></div>
+			<div class = "col col-a"></div>
+			<div class = "col col-b"></div>
+			<div class = "col col-c"></div>
+			<div class = "col col-d"></div>
+			<div class = "col col-e"></div>
+			<div class = "col col-f"></div>
+		</div>			
+			
+	</div>
+	
+	<div style = "margin-top:40px;">Simulator written by Richard Grafton</div>
+	
+</body>
+
+	</html>
