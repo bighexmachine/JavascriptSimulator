@@ -12,18 +12,13 @@
 	src: url(CircularStd-Bold.otf);
 }  
 
-h1
-{
-	text-align:center;
-	margin-top:30px;
-}
   
 .col
 {
 	width:20px;
 	height:20px;
 	border:3px solid white;
-	background-color:lightgray;
+	background-color:#eeeeee;
 }
 
 .col
@@ -40,22 +35,42 @@ h1
 
 body
 {
-	margin:auto;
-	width:416px;
-	margin-bottom:50px;
+    margin:5% 17.5% 5% 17.5%;
+    background-color:rgba(255, 100, 255, 0.9);
+    color:white;
+    padding:25px;
+    border-radius:2px;
+    position:relative;
+    font-size:18px;
+    padding-bottom:80px;
+    min-width:500px;
 }
+
+html 
+{
+  background: url(comp.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
 
 #display
 {
 	width:416px;
 	margin-top:30px;
-	border:1px solid lightgray;
 	overflow:auto;
+	margin-left:auto;
+	margin-right:auto;
+	padding:20px;
+	background-color:white;
 }
 
 .label
 {
-	border:1px solid lightgray;
+	border:1px solid white;
 	display:inline-block;
 	margin-right:10px;
 	padding:10px;	
@@ -67,13 +82,12 @@ body
 	display:block;
 	overflow:auto;	
 	text-align:center;
-	width:416px;
 }
 
 #registers .label
 {
 	margin-right:5px;
-	font-size:12px;
+	font-size:16px;
 }
 
 #controls .label
@@ -88,49 +102,34 @@ body
 {
 	display:block;
 	text-align:left;
-	margin:0px;
-	margin-bottom:10px;
+	margin: 0px auto 20px auto;
+	background-color:magenta;
+	border:1px solid white;
+	width:75%;
 }
 
-#start
-{
-	background-color:lime;
-}
-
-#stop
-{
-	background-color:red;	
-}
-
-#reset
-{
-	background-color:black;	
-}
-
-#clockslow
-{
-	background-color:blue;	
-}
-
-#clockfast
-{
-	background-color:orange;	
-}
 
 .filedisplay
 {
 	font-size:10px;
 	padding:5px;
-	border:1px dashed gray;
+	border:1px dashed white;
 	margin-top:10px;
 }
 
 .button
 {
 	border-radius:5px;
-	background-color:black;
-	color:white;
-	border:0px !important;	
+	background-color:white;
+	color:magenta !important;
+	border:2px solid white !important;
 	cursor:pointer;
 	user-select: none;
+}
+
+#logo
+{
+  position:absolute;
+  bottom:20px;
+  right:20px;
 }

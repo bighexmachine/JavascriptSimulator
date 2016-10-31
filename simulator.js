@@ -243,8 +243,8 @@ function updateDisplay()
 		{
 			var id = $('.row-' + j.toString(16) + ' > .col-' + k.toString(16));
 			
-			if(x[k] == 0) id.css("background-color", "lightgray");
-			else id.css("background-color", "red");
+			if(x[k] == 0) id.css("background-color", "#eeeeee");
+			else id.css("background-color", "magenta");
 		}
 		
 	}
