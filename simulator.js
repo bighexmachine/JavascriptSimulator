@@ -79,7 +79,7 @@ function clearMemory()
 function cycle()
 {
 	fetch();
-	updateRegisters();
+	statusUpdate();
 	incrementPC();
 	execute();
 	updateDisplay();
@@ -250,19 +250,6 @@ function updateDisplay()
 	}
 }
 
-/*
- * Need to change to callback - need to remove html references
- */
-function updateRegisters()
-{
-	$('#areg').html(aReg);
-	$('#breg').html(bReg);
-	$('#preg').html(pReg);
-	$('#ireg').html(instIdx[iReg]);
-	$('#oreg').html(oReg);
-}
-
-
 
 
 /*
@@ -291,5 +278,24 @@ function unsigned16bitToSigned(x)
 }
 
 
+/*
+ * Initiates callback function updateStatus(data)
+ * Where data arg is a representation of the machine state.
+ */
+function statusUpdate()
+{	
+	var sim = {
+		
+		"aReg" : aReg,
+		"bReg" : bReg,
+		"oReg" : oReg,
+		"iReg" : iReg,
+		"inst" : instIdx[iReg],
+		"pReg" : pReg
+	};
+	
+	if(typeof updateStatus === "function") updateStatus(sim);
+	
+}
 
 

@@ -49,7 +49,7 @@ $(document).ready(function(){
 	
 	$('#clockfast').on('click', function(e) {
 		clearInterval(clock);
-		clock = setInterval(function(){cycle()}, 50);
+		clock = setInterval(function(){cycle()}, 1);
 	});
 	
 	$('#reset').on('click', function(e) {
@@ -60,3 +60,17 @@ $(document).ready(function(){
 	});
 	
 });
+
+/*
+ * A callback function which provides the status of the Simulator
+ */
+function updateStatus(data)
+{
+	$('#areg').html(data.aReg);
+	$('#breg').html(data.bReg);
+	$('#preg').html(data.pReg);
+	$('#ireg').html(data.inst);
+	$('#oreg').html(data.oReg);
+}
+
+
