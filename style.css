@@ -119,10 +119,8 @@ html
 
 .button
 {
-	border-radius:5px;
 	background-color:white;
 	color:magenta !important;
-	border:2px solid white !important;
 	cursor:pointer;
 	user-select: none;
 }
