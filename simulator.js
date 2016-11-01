@@ -29,6 +29,8 @@ const opr_out = 3;
 
 var instIdx = ["ldam","ldbm","stam","ldac","ldbc","ldai", "ldap", "ldbi","stai","br","brz","brn","brb","opr","pfix","nfix"];
 
+
+
 /*
  * Define architecture components
  */
@@ -43,6 +45,8 @@ var bReg = 0;
 var inReg = 0;
 var outReg = 0;
 
+var dRow = 0;
+var fb = 0x7FF0;
 
 /*
  * Take lBytes and uBytes and mash togeather into single words.
@@ -68,6 +72,8 @@ function clearMemory()
 	bReg = 0;
 	inReg = 0;
 	outReg = 0;
+	
+	statusUpdate();
 }
 
 
@@ -78,11 +84,17 @@ function clearMemory()
  */
 function cycle()
 {
+	if(dRow > 15) dRow = 0;
+	
 	fetch();
 	statusUpdate();
 	incrementPC();
 	execute();
-	updateDisplay();
+	
+	//Callback function to update row
+	if(typeof updateRow === "function") updateRow(dRow,dec2bin(memory[fb + dRow]).split(""));
+	
+	dRow++;
 }
 
 
@@ -227,28 +239,6 @@ function execute()
 
 }
 
-/*
- * Need to change to callback - need to remove html references
- */
-function updateDisplay()
-{
-	var fb = 0x7FF0;
-	
-	for(var j = 0; j < 16; j++)
-	{
-		//this flips the image too
-		var x = dec2bin(memory[fb + (15-j)]).split("");
-		
-		for(var k = 0; k < 16; k++)
-		{
-			var id = $('.row-' + j.toString(16) + ' > .col-' + k.toString(16));
-			
-			if(x[k] == 0) id.css("background-color", "#eeeeee");
-			else id.css("background-color", "magenta");
-		}
-		
-	}
-}
 
 
 
@@ -261,7 +251,7 @@ function dec2bin(dec)
     var res = (dec >>> 0).toString(2);
 	var ser = "";
 	
-	for(var i = 0; i < (16 - res.length); i++) ser = ser.concat("0");	
+	for(var i = 0; i < (16 - res.length); i++) ser += '0';	
 	
 	return ser.concat(res);
 }
