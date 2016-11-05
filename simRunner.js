@@ -51,11 +51,7 @@ $(document).ready(function(){
 	$('#clockfast').on('click', function(e) {
 		clearInterval(clock);
 		clock = setInterval(function(){
-			for(var z = 0; z < 10; z++)
-			{
-				cycle()
-			}
-		}, 1);
+			for(var z = 0; z < 10; z++){ cycle() } }, 1);
 	});
 	
 	$('#reset').on('click', function(e) {
@@ -87,7 +83,7 @@ function updateStatus(data)
 
 
 /*
- * Need to change to callback - need to remove html references
+ * A callback function which updates a line from the frame buffer.
  */
 function updateRow(row, lineBuffer)
 {
