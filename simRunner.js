@@ -73,6 +73,10 @@ function updateStatus(data)
 	$('#preg').html(data.pReg);
 	$('#ireg').html(data.inst);
 	$('#oreg').html(data.oReg);
+	$('#iport1').html(data.iPt1);
+	$('#iport2').html(data.iPt2);
+	$('#oport1').html(data.oPt1);
+	$('#oport2').html(data.oPt2);	
 }
 
 

@@ -42,8 +42,9 @@ var oReg = 0;
 var pReg = 0;
 var aReg = 0;
 var bReg = 0;
-var inReg = 0;
-var outReg = 0;
+
+var iPrt = [0,0];
+var oPrt = [0,0];
 
 var dRow = 0;
 var fb = 0x7FF0;
@@ -224,12 +225,12 @@ function execute()
 				break;
 				
 				case opr_in:
-					aReg = inReg;
+					aReg = iPrt[aReg];
 					oReg = 0;
 				break;
 				
 				case opr_out:
-					outReg = aReg;
+					oPrt[bReg] = aReg;
 					oReg = 0;
 				break;
 			}
@@ -240,7 +241,14 @@ function execute()
 }
 
 
-
+/*
+ * Function to set input ports
+ */
+function input(port, value)
+{
+	iPrt[port] = value;
+	statusUpdate();
+}
 
 /*
  * Helper functions to do some binary manipulation due to Javascript's lack of types
@@ -281,11 +289,14 @@ function statusUpdate()
 		"oReg" : oReg,
 		"iReg" : iReg,
 		"inst" : instIdx[iReg],
-		"pReg" : pReg
+		"pReg" : pReg,
+		"iPt1" : iPrt[0],
+		"iPt2" : iPrt[1],
+		"oPt1" : oPrt[0],
+		"oPt2" : oPrt[1]
 	};
 	
 	if(typeof updateStatus === "function") updateStatus(sim);
-	
 }
 
 

@@ -59,7 +59,7 @@ html
 
 #display
 {
-	width:416px;
+	width:392px;
 	margin-top:30px;
 	overflow:auto;
 	margin-left:auto;
@@ -76,7 +76,7 @@ html
 	padding:10px;	
 }
 
-#registers, #controls, #memoryloaders
+#registers, #ports, #controls, #memoryloaders
 {
 	margin-top:30px;
 	display:block;
