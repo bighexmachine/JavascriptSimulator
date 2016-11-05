@@ -50,7 +50,12 @@ $(document).ready(function(){
 	
 	$('#clockfast').on('click', function(e) {
 		clearInterval(clock);
-		clock = setInterval(function(){cycle()}, 1);
+		clock = setInterval(function(){
+			for(var z = 0; z < 10; z++)
+			{
+				cycle()
+			}
+		}, 1);
 	});
 	
 	$('#reset').on('click', function(e) {
@@ -86,7 +91,7 @@ function updateStatus(data)
  */
 function updateRow(row, lineBuffer)
 {
-	var r = '.row-' + hex[row] + ' > .col-';
+	var r = '.row-' + hex[15-row] + ' > .col-';
 	
 	for(var k = 0; k < 16; k++)
 	{
